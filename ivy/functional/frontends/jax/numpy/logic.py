@@ -137,6 +137,7 @@ sometrue = any
 def logical_and(x1, x2, /):
     if x1.dtype == "complex128" or x2.dtype == "complex128":
         x1 = ivy.astype(x1, ivy.complex128)
+        x1 = ivy.astype(x1, ivy.complex128)
         x2 = ivy.astype(x2, ivy.complex128)
     else:
         x1, x2 = promote_jax_arrays(x1, x2)
@@ -157,3 +158,8 @@ def isinf(x, /):
 def isclose(a, b, rtol=1e-05, atol=1e-08, equal_nan=False):
     a, b = promote_jax_arrays(a, b)
     return ivy.isclose(a, b, rtol=rtol, atol=atol, equal_nan=equal_nan)
+
+
+
+def logical_or(x1, x2, /):
+    return ivy.logical_or(x1, x2)
